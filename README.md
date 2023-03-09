@@ -170,5 +170,5 @@ https://groups.google.com/forum/#!forum/zrlio-users
 
 or email: zrlio-users@googlegroups.com
 
-## Action 
-Actions Status: [![Compile libdisni](https://github.com/Rembrant777/disni/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/Rembrant777/disni/actions/workflows/c-cpp.yml)
+## Action Status
+[![Compile libdisni](https://github.com/Rembrant777/disni/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/Rembrant777/disni/actions/workflows/c-cpp.yml)

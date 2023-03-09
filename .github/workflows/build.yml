@@ -35,7 +35,7 @@ jobs:
           cd /tmp && tar xzf rdma-core.tar.gz && 
           sudo ./build.sh && 
           echo "rdma installed ok" 
-    - name: Compile and build libdisni
+    - name: Compile and build
       run: |
          echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh     
     - name: Compile disni maven project 
