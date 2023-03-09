@@ -185,21 +185,20 @@
         <configuration>
           <verbose>true</verbose>
           <fork>true</fork>
-          <source>11</source>
-          <target>11</target>
+          <source>17</source>
+          <target>17</target>
           <compilerArgs>
+            <!-- refer to https://issues.apache.org/jira/browse/SPARK-37719 -->
             <arg>--add-exports</arg>
-            <arg>java.base/sun.security.x509=ALL-UNNAMED</arg>
+            <arg>java.base/java.nio=ALL-UNNAMED</arg>
             <arg>--add-exports</arg>
-            <arg>java.base/sun.security.util=ALL-UNNAMED</arg>
+            <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>
             <arg>--add-exports</arg>
-            <arg>javax.annotation-api/javax.annotation=ALL-UNNAMED</arg>
+            <arg>java.base/java.nio=ALL-UNNAMED</arg>
             <arg>--add-exports</arg>
-            <arg>java.base/sun.security.provider=ALL-UNNAMED</arg>
+            <arg>java.base/java.lang=ALL-UNNAMED</arg>
             <arg>--add-exports</arg>
-            <arg>java.base/sun.security.pkcs=ALL-UNNAMED</arg>
-            <arg>--add-exports</arg>
-            <arg>java.naming/com.sun.jndi.ldap=ALL-UNNAMED</arg>
+            <arg>java.base/java.lang.invoke=ALL-UNNAMED</arg>
           </compilerArgs>
         </configuration>
       </plugin>
