@@ -41,7 +41,7 @@ jobs:
          echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh     
     - name: Compile disni maven project 
       run: |
-         cd ../ && echo "$(pwd)" && mvn --version  && 
+         echo "$(pwd)" && mvn --version  && 
          ls * && 
          mvn -DskipTests install
 
