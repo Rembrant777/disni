@@ -1,4 +1,4 @@
-name: Compile libdisni
+name: Compile disni
 
 on: [pull_request]
 
@@ -32,10 +32,16 @@ jobs:
       run: |
           echo $(pwd) &&
           wget -nv -O /tmp/rdma-core.tar.gz https://github.com/linux-rdma/rdma-core/archive/refs/tags/v44.0.tar.gz   
-          cd /tmp && tar xzf rdma-core.tar.gz && 
+          cd /tmp && tar xzf rdma-core.tar.gz &&  
+          cd rdma-core-44.0/ && 
           sudo ./build.sh && 
           echo "rdma installed ok" 
     - name: Compile and build
       run: |
-         echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh      
+         echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh     
+    - name: Compile disni maven project 
+      run: |
+         echo "$(pwd)" && mvn --version  && 
+         ls * && 
+         mvn -DskipTests install
 
