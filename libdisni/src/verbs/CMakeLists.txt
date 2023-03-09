@@ -1,14 +1,15 @@
 add_library(verbs)
 
-find_package(jni REQUIRED)
+message("Add Jni by manual")
+include_directories(/opt/hostedtoolcache/Java_Oracle_jdk/17/x64/include/linux)
+include_directories(/opt/hostedtoolcache/Java_Oracle_jdk/17/x64/include)
+include_directories(/opt/hostedtoolcache/Java_Oracle_jdk/17/x64/jre/lib/server)
+include_directories(/opt/hostedtoolcache/Java_Oracle_jdk/17/x64/jre/lib)
 
-if (JNI_FOUND)
-    message("Jni is found we got it include dir ${JNI_INCLUDE_DIRS}")
-    include_directories(${JNI_INCLUDE_DIRS})
-
-    message("Jni is found we got it library dir ${JNI_LIBRARIES}")
-    include_directories(${JNI_LIBRARIES})
-endif(Jni_FOUND)
+message("Add rdma includes directory ")
+include_directories(/tmp/rdma-core-44.0/build/include)
+message("Add rdma libraries directory")
+include_directories(/tmp/rdma-core-44.0/build/lib)
 
 target_sources(verbs
     PRIVATE
