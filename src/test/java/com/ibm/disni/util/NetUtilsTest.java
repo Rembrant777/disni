@@ -27,22 +27,22 @@ public class NetUtilsTest extends TestCase {
     }
 
     public void testShortByteOrder() {
-        short s = Short.MIN_VALUE;
-        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(s), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(s)));
+        short v = Short.MAX_VALUE;
+        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(v), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(NetUtils.hostToNetworkByteOrder(v))));
     }
 
     public void testIntByteOrder() {
-        int i = Integer.MAX_VALUE;
-        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(i), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(i)));
+        int v = Integer.MAX_VALUE;
+        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(v), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(NetUtils.hostToNetworkByteOrder(v))));
     }
 
     public void testLongByteOrder() {
-        long l = Long.MIN_VALUE;
-        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(l), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(l)));
+        long v = Long.MIN_VALUE;
+        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(v), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(NetUtils.hostToNetworkByteOrder(v))));
     }
 
     public void testCharByteOrder() {
-        char c = Character.MAX_VALUE;
-        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(c), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(c)));
+        char v = Character.MAX_VALUE;
+        Assert.assertEquals(NetUtils.hostToNetworkByteOrder(v), NetUtils.hostToNetworkByteOrder(NetUtils.networkToHostByteOrder(NetUtils.hostToNetworkByteOrder(v))));
     }
 }
