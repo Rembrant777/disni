@@ -43,5 +43,8 @@ jobs:
       run: |
          echo "$(pwd)" && mvn --version  && 
          ls * && 
-         mvn -DskipTests install
+         mvn clean install -DskipTests 
+    - name: Try to find generated jar file
+      run: |
+        echo "$(pwd)" && cd target/ && ls * && 
 
