@@ -41,10 +41,4 @@ jobs:
          echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh     
     - name: Compile disni maven project 
       run: |
-         echo "$(pwd)" && mvn --version  && 
-         ls * && 
-         mvn clean install -DskipTests 
-    - name: Try to find generated jar file
-      run: |
-        echo "$(pwd)" && cd target/ && ls * && 
-
+         mvn clean install -Pdisni_jdk17 

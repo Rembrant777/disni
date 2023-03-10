@@ -21,13 +21,20 @@
 
 package com.ibm.disni.util;
 
+import org.slf4j.Logger;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
+/**
+ * Byte order in network package and host local buffer is usually different:
+ * network use big endian, host use little endian.
+ */
 public class NetUtils {
 	private final static boolean nativeIsNetwork = ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN;
+	private static final Logger LOG = DiSNILogger.getLogger();
 	
 	private NetUtils(){
 	}
@@ -62,58 +69,119 @@ public class NetUtils {
 		InetAddress address = InetAddress.getByAddress(addr);
 		return address;
 	}
-	
+
+	/**
+	 * short in java occupy 2 bytes
+	 *
+	 * convert short from host byte order (little-endian) into network byte order (big-endian)
+	 * if host native is big-endian the network byte order, will not invoke swap method and return directly.
+	 * @param x short type variable from host
+	 * @return converted big-endian byte order's short variable
+	 */
 	public static short hostToNetworkByteOrder(short x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}
 		return EndianUtils.swap(x);
 	}
 
+	/**
+	 * char in java occupy 2 bytes
+	 * convert char from host byte order (little-endian) into network byte order (big-endian)
+	 * if host native is big-endian the network byte order, will not invoke swap method and return directly.
+	 * @param x char type variable from host
+	 * @return converted big-endian byte order's short variable
+	 */
 	public static char hostToNetworkByteOrder(char x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
 	}
 
+	/**
+	 * int in java occupy 4 bytes
+	 * convert int from host byte order(little-endian) into network byte order (big-endian)
+	 * if host native is big-endian the network byte order, will not invoke swap method and return directly.
+	 * @param x int type variable from host
+	 * @return converted big-endian byte order's int variable
+	 */
 	public static int hostToNetworkByteOrder(int x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
 	}
 
+	/**
+	 * long in java occupy 8 bytes
+	 * convert long from host byte order(little-endian) into network byte order (big-endian)
+	 * if host native is big-endian the network byte order, will not invoke swap method and return directly.
+	 * @param x long type variable from host
+	 * @return converted big-endian byte order's long variable
+	 */
 	public static long hostToNetworkByteOrder(long x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
 	}	
-	
+
+	/**
+	 * convert short variable from network byte order (big-endian) into host byte order (little-endian)
+	 * if host native originally is big-endian return directly without swap method invoking.
+	 * @param x short type variable from network package
+	 * @return converted big-endian byte order's short variable
+	 */
 	public static short networkToHostByteOrder(short x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
 	}
-	
+
+	/**
+	 * convert char variable from network byte order (big-endian) into host byte order (little-endian)
+	 * if host native is big-endian return directly without swap method invoking.
+	 * @param x char type variable from network package
+	 * @return converted big-endian byte order's char variable
+	 */
 	public static char networkToHostByteOrder(char x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
 	}
-	
+
+	/**
+	 * convert int variable from network byte order (big-endian) into host byte order (little-endian)
+	 * if host native is big-endian return directly without swap method invoking.
+	 * @param x int type variable from network package
+	 * @return converted big-endian byte order's int variable
+	 */
 	public static int networkToHostByteOrder(int x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
 	}
-	
+
+	/**
+	 * convert long variable from network byte order (big-endian) into host byte order (little-endian)
+	 * if host native is big-endian return directly without swap method invoking.
+	 * @param x long type variable from network package
+	 * @return converted big-endian byte order's long variable
+	 */
 	public static long networkToHostByteOrder(long x) {
 		if (nativeIsNetwork){
+			LOG.trace("#hostToNetworkByOrder native byte order is network order(Big Endian)");
 			return x;
 		}		
 		return EndianUtils.swap(x);
