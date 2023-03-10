@@ -12,7 +12,7 @@ public class EndianUtilsTest extends TestCase {
 
     public void testSwap1() {
         LOG.info("#testSwap1");
-
+        System.out.println("#testSwap1");
     }
 
     public void testSwap2() {
@@ -27,6 +27,6 @@ public class EndianUtilsTest extends TestCase {
 
     public void testSwap4() {
         LOG.info("#testSwap4");
-        
+
     }
 }
