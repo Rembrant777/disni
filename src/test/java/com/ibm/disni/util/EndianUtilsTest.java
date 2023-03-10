@@ -1,5 +1,6 @@
 package com.ibm.disni.util;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.slf4j.Logger;
 
@@ -12,7 +13,7 @@ public class EndianUtilsTest extends TestCase {
 
     public void testSwap1() {
         LOG.info("#testSwap1");
-        System.out.println("#testSwap1");
+        Assert.assertTrue(1==2);
     }
 
     public void testSwap2() {
