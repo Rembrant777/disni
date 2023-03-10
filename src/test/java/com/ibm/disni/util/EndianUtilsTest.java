@@ -4,6 +4,8 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.slf4j.Logger;
 
+import java.util.Random;
+
 /**
  * Mae
  * 2023/3/10 9:18 AM
@@ -11,22 +13,27 @@ import org.slf4j.Logger;
 public class EndianUtilsTest extends TestCase {
     private static Logger LOG = DiSNILogger.getLogger();
 
-    public void testSwap1() {
+    public void testSwapShort() {
         LOG.info("#testSwap1");
-        Assert.assertTrue(1==2);
+        Random rr = new Random();
+        short EXPECTED_SHORT = Short.valueOf(String.valueOf(Math.abs(rr.nextInt() % (Short.MAX_VALUE))));
+        Assert.assertEquals(EXPECTED_SHORT, EndianUtils.swap(EndianUtils.swap(EXPECTED_SHORT)));
+
+        EXPECTED_SHORT *= -1;
+        Assert.assertEquals(EXPECTED_SHORT, EndianUtils.swap(EndianUtils.swap(EXPECTED_SHORT)));
     }
 
-    public void testSwap2() {
+    public void testSwapChar() {
         LOG.info("#testSwap2");
 
     }
 
-    public void testSwap3() {
+    public void testSwapInt() {
         LOG.info("#testSwap3");
 
     }
 
-    public void testSwap4() {
+    public void testSwapLong() {
         LOG.info("#testSwap4");
 
     }
