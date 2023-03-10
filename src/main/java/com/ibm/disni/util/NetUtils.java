@@ -33,7 +33,7 @@ import java.nio.ByteOrder;
  * network use big endian, host use little endian.
  */
 public class NetUtils {
-	private final static boolean nativeIsNetwork = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+	private final static boolean nativeIsNetwork = ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN;
 	private static final Logger LOG = DiSNILogger.getLogger();
 	
 	private NetUtils(){
