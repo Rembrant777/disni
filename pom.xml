@@ -132,15 +132,15 @@
                           <target>17</target>
                           <compilerArgs>
                               <!-- refer to https://issues.apache.org/jira/browse/SPARK-37719 -->
-                              <arg>--add-exports</arg>
+                              <arg>--add-opens</arg>
                               <arg>java.base/java.nio=ALL-UNNAMED</arg>
-                              <arg>--add-exports</arg>
+                              <arg>--add-opens</arg>
                               <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>
-                              <arg>--add-exports</arg>
+                              <arg>--add-opens</arg>
                               <arg>java.base/java.nio=ALL-UNNAMED</arg>
-                              <arg>--add-exports</arg>
+                              <arg>--add-expopensorts</arg>
                               <arg>java.base/java.lang=ALL-UNNAMED</arg>
-                              <arg>--add-exports</arg>
+                              <arg>--add-opens</arg>
                               <arg>java.base/java.lang.invoke=ALL-UNNAMED</arg>
                           </compilerArgs>
                       </configuration>
