@@ -49,6 +49,26 @@
     </snapshotRepository>
   </distributionManagement>
 
+    <properties>
+        <CodeCacheSize>128m</CodeCacheSize>
+        <extraJavaTestArgs>
+            -XX:+IgnoreUnrecognizedVMOptions
+            --add-opens=java.base/java.lang=ALL-UNNAMED
+            --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+            --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+            --add-opens=java.base/java.io=ALL-UNNAMED
+            --add-opens=java.base/java.net=ALL-UNNAMED
+            --add-opens=java.base/java.nio=ALL-UNNAMED
+            --add-opens=java.base/java.util=ALL-UNNAMED
+            --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+            --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED
+            --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+            --add-opens=java.base/sun.nio.cs=ALL-UNNAMED
+            --add-opens=java.base/sun.security.action=ALL-UNNAMED
+            --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+        </extraJavaTestArgs>
+    </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -132,18 +152,37 @@
                           <target>17</target>
                           <compilerArgs>
                               <!-- refer to https://issues.apache.org/jira/browse/SPARK-37719 -->
-                              <arg>--add-opens</arg>
+                              <arg>--add-exports</arg>
                               <arg>java.base/java.nio=ALL-UNNAMED</arg>
-                              <arg>--add-opens</arg>
+                              <arg>--add-exports</arg>
                               <arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>
-                              <arg>--add-opens</arg>
+                              <arg>--add-exports</arg>
                               <arg>java.base/java.nio=ALL-UNNAMED</arg>
-                              <arg>--add-opens</arg>
+                              <arg>--add-exports</arg>
                               <arg>java.base/java.lang=ALL-UNNAMED</arg>
-                              <arg>--add-opens</arg>
+                              <arg>--add-exports</arg>
                               <arg>java.base/java.lang.invoke=ALL-UNNAMED</arg>
                           </compilerArgs>
                       </configuration>
+                  </plugin>
+                  <!-- Surefire runs all Java tests -->
+                  <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-surefire-plugin</artifactId>
+                  <version>3.0.0-M5</version>
+                  <!-- Note config is repeated in scalatest config -->
+                  <configuration>
+                  <includes>
+                      <include>**/Test*.java</include>
+                      <include>**/*Test.java</include>
+                      <include>**/*TestCase.java</include>
+                      <include>**/*Suite.java</include>
+                  </includes>
+                  <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                  <argLine>-ea -Xmx4g -Xss4m -XX:MaxMetaspaceSize=2g -XX:ReservedCodeCacheSize=${CodeCacheSize} ${extraJavaTestArgs} -Dio.netty.tryReflectionSetAccessible=true</argLine>
+                  <environmentVariables>
+                  </environmentVariables>
+                  </configuration>
                   </plugin>
               </plugins>
           </build>
