@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-dev")
-add_executable(rdma_tester test.cpp)
+add_executable(libdisni "")
 
 add_subdirectory(affinity)
 add_subdirectory(verbs)
 
 
-target_link_libraries(rdma_tester verbs affinity)
+target_link_libraries(libdisni verbs affinity)
