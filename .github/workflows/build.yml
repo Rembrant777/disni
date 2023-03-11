@@ -38,7 +38,7 @@ jobs:
           echo "rdma installed ok" 
     - name: Compile and build
       run: |
-         echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh  && cd build/ && find . 'disni'
+         echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh && cd build/ && find . 'disni'
     - name: Compile disni maven project 
       run: |
          mvn clean install -Pdisni_jdk17
