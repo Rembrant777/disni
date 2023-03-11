@@ -21,11 +21,14 @@
 
 package com.ibm.disni.util;
 
+import org.slf4j.Logger;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 public class MemoryAllocation {
+	private final static Logger LOG = DiSNILogger.getLogger();
 	private static MemoryAllocation instance = null;
 	private ConcurrentSkipListMap<Integer, MemBuf> table;
 	private static final int MIN_BLOCK_SIZE = 64; // 64B
@@ -78,5 +81,12 @@ public class MemoryAllocation {
 		buffer.order(ByteOrder.nativeOrder());
 		return new MemBuf(buffer, this);
 	}
+	public void printTable() {
+		LOG.info("MemoryAllocation#table size {}", table.size());
+		System.out.println("MemoryAllocation#table size " + table.size());
+	}
 
+	public ConcurrentSkipListMap getTable() {
+		return table;
+	}
 }
