@@ -42,5 +42,5 @@ jobs:
       - name: Compile disni maven project
         run: |
           ls libdisni/src/build/* &&
-          sudo mv libdisni/src/build/libdisni.a /usr/lib/ && 
+          sudo mv libdisni/src/build/libdisni.a  /usr/java/packages/lib/ && 
           mvn clean install -Pdisni_jdk17 
