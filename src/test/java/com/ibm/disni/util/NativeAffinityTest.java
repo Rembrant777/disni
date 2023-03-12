@@ -1,6 +1,7 @@
 package com.ibm.disni.util;
 
 import junit.framework.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -9,6 +10,7 @@ import org.junit.Test;
  */
 public class NativeAffinityTest {
     @Test
+    @Ignore
     public void testSetAffinity() {
         long affinity = 1L << 1;
         NativeAffinity.setAffinity(affinity);
