@@ -43,4 +43,4 @@ jobs:
         run: |
           ls libdisni/src/build/* &&
           sudo mv libdisni/src/build/*.a  /usr/lib64/ && 
-          mvn clean install -Pdisni_jdk17 -Djava.library.path=/usr/lib64 -DSkipTests
+          mvn clean install -Pdisni_jdk17 -DSkipTests
