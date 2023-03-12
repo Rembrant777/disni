@@ -1,7 +1,7 @@
 package com.ibm.disni.util;
 
 import junit.framework.Assert;
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Random;
 
@@ -9,7 +9,8 @@ import java.util.Random;
  * Mae
  * 2023/3/10 9:18 AM
  */
-public class EndianUtilsTest extends TestCase {
+public class EndianUtilsTest {
+    @Test
     public void testSwapShort() {
         Random rr = new Random();
         short EXPECTED_SHORT = Short.valueOf(String.valueOf(Math.abs(rr.nextInt() % (Short.MAX_VALUE))));
@@ -19,11 +20,13 @@ public class EndianUtilsTest extends TestCase {
         Assert.assertEquals(EXPECTED_SHORT, EndianUtils.swap(EndianUtils.swap(EXPECTED_SHORT)));
     }
 
+    @Test
     public void testSwapChar() {
         char EXPECTED_CHAR = 'c';
         Assert.assertEquals(EXPECTED_CHAR, EndianUtils.swap(EndianUtils.swap(EXPECTED_CHAR)));
     }
 
+    @Test
     public void testSwapInt() {
         Random rr = new Random();
         int EXPECTED_INT = Math.abs(rr.nextInt());
@@ -33,6 +36,7 @@ public class EndianUtilsTest extends TestCase {
         Assert.assertEquals(EXPECTED_INT, EndianUtils.swap(EndianUtils.swap(EXPECTED_INT)));
     }
 
+    @Test
     public void testSwapLong() {
         Random rr = new Random();
         long EXPECTED_LONG = Math.abs(rr.nextLong());

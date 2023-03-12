@@ -10,35 +10,37 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-      
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        submodules: recursive
-    - name: Install JDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'oracle' 
-        java-version: '17'  
-    - name: Install linux rdma pre-required libs 
-      run: |
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Install JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+      - name: Install linux rdma pre-required libs
+        run: |
           java --version && 
           cd "${JAVA_HOME}" && find . | grep 'jni' && 
           find . | grep 'jni_md' && 
           echo "install pre-required libraries" && 
           sudo apt-get install libnl-route-3-dev libnl-3-dev
-    - name: Download linux-rdma and compile and install 
-      run: |
+      - name: Download linux-rdma and compile and install
+        run: |
           echo $(pwd) &&
           wget -nv -O /tmp/rdma-core.tar.gz https://github.com/linux-rdma/rdma-core/archive/refs/tags/v44.0.tar.gz   
           cd /tmp && tar xzf rdma-core.tar.gz &&  
           cd rdma-core-44.0/ && 
           sudo ./build.sh && 
-          echo "rdma installed ok" 
-    - name: Compile and build
-      run: |
-         echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh     
-    - name: Compile disni maven project 
-      run: |
-         mvn clean install -Pdisni_jdk17 
+          echo "rdma installed ok"
+      - name: Compile and build
+        run: |
+          echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh
+      - name: Compile disni maven project
+        run: |
+          ls libdisni/src/build/* &&
+          sudo mv libdisni/src/build/*.a  /usr/lib64/ && 
+          mvn clean install -Pdisni_jdk17 -DSkipTests

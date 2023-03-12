@@ -22,9 +22,11 @@
 package com.ibm.disni.util;
 
 public class NativeAffinity {
-	
+	private final static String JAVA_LIB_PATH_KEY = "java.library.path";
 	static {
-	    System.loadLibrary("disni");
+		String javaLibPath = System.getProperty(JAVA_LIB_PATH_KEY);
+		System.out.println("java.library.path=" + javaLibPath);
+	    System.loadLibrary("libdisni");
 	}	
 	
 	public static void setAffinity(long affinity){
