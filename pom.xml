@@ -152,6 +152,7 @@
                           <target>17</target>
                           <compilerArgs>
                               <!-- refer to https://issues.apache.org/jira/browse/SPARK-37719 -->
+                              <!-- refer to https://github.com/LuciferYang/spark/blob/0618b0cb09765ba0ae91972b91bc960756dc8b49/pom.xml -->
                               <arg>--add-exports</arg>
                               <arg>java.base/java.nio=ALL-UNNAMED</arg>
                               <arg>--add-exports</arg>
