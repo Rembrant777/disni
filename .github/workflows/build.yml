@@ -43,4 +43,4 @@ jobs:
         run: |
           ls libdisni/src/build/* &&
           sudo mv libdisni/src/build/libdisni.a /usr/lib/ && 
-          mvn clean install -Pdisni_jdk17 -DskipTests
+          mvn clean install -Pdisni_jdk17 
