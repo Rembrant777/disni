@@ -41,6 +41,6 @@ jobs:
           echo $(pwd) &&  cd ./libdisni && sudo sh ./build.sh
       - name: Compile disni maven project
         run: |
-          ls libdisni/src/build/libdisni/* &&
+          ls libdisni/src/build/* &&
           echo $LD_LIBRARY_PATH && 
           mvn clean install -Pdisni_jdk17 -DskipTests
